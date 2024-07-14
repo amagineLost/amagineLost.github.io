@@ -3,144 +3,122 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Scripting and Coding Page</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <style>
-        body {
-            background-color: #0d0d0d;
-            color: #00ff00;
-            font-family: 'Courier New', Courier, monospace;
-            margin: 0;
-            padding: 0;
-        }
-        header {
-            background-color: #000;
-            padding: 20px;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            color: #00ff00;
-        }
-        nav {
-            text-align: center;
-            margin-top: 20px;
-        }
-        nav a {
-            color: #00ff00;
-            text-decoration: none;
-            margin: 0 15px;
-            font-weight: bold;
-        }
-        nav a:hover {
-            text-decoration: underline;
-        }
-        section {
-            padding: 20px;
-        }
-        section h2 {
-            border-bottom: 2px solid #00ff00;
-            padding-bottom: 10px;
-        }
-        footer {
-            background-color: #000;
-            text-align: center;
-            padding: 10px;
-            position: fixed;
-            width: 100%;
-            bottom: 0;
-        }
-        code {
-            background-color: #333;
-            padding: 5px;
-            border-radius: 5px;
-            display: block;
-            margin: 10px 0;
-        }
-        .responsive {
-            max-width: 100%;
-            height: auto;
-        }
-        .projects img {
-            width: 100px;
-            height: 100px;
-            margin-right: 10px;
-        }
-        .fa {
-            margin-right: 10px;
-        }
-        @media (max-width: 768px) {
-            nav {
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-            }
-            nav a {
-                margin: 10px 0;
-            }
-        }
-    </style>
+    <title>Advanced Cool Webpage</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
     <header>
-        <h1>Welcome to My Scripting and Coding Page</h1>
+        <nav>
+            <div class="logo">MySite</div>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#portfolio">Portfolio</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
     </header>
-    <nav>
-        <a href="#scripting">Scripting</a>
-        <a href="#coding-basics">Coding Basics</a>
-        <a href="#projects">Projects</a>
-        <a href="#resources">Resources</a>
-    </nav>
-    <section id="scripting">
-        <h2>Scripting</h2>
-        <p>Here you'll find various scripts and coding snippets that I have created or found useful.</p>
-        <code>
-            // Example Script<br>
-            console.log('Hello, World!');
-        </code>
-        <p>Example of a Python script:</p>
-        <code>
-            # Python Example<br>
-            print("Hello, World!")
-        </code>
-    </section>
-    <section id="coding-basics">
-        <h2>Coding Basics</h2>
-        <p>Understanding the basics of coding is essential. Here are some fundamental concepts:</p>
-        <ul>
-            <li>Variables and Data Types</li>
-            <li>Control Structures (if, else, loops)</li>
-            <li>Functions and Methods</li>
-            <li>Object-Oriented Programming</li>
-        </ul>
-    </section>
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <p>Below are some of the projects I have worked on:</p>
-        <div>
-            <img src="https://via.placeholder.com/100" alt="Project 1" class="responsive">
-            <p>Project 1: <a href="#">Description and Link</a></p>
-        </div>
-        <div>
-            <img src="https://via.placeholder.com/100" alt="Project 2" class="responsive">
-            <p>Project 2: <a href="#">Description and Link</a></p>
-        </div>
-        <div>
-            <img src="https://via.placeholder.com/100" alt="Project 3" class="responsive">
-            <p>Project 3: <a href="#">Description and Link</a></p>
+    <section id="home" class="hero-section">
+        <div class="hero-content">
+            <h1>Welcome to My Advanced Webpage</h1>
+            <p>Your adventure starts here. Explore now.</p>
+            <a href="#about" class="btn">Learn More</a>
         </div>
     </section>
-    <section id="resources">
-        <h2>Resources</h2>
-        <p>Here are some useful resources for learning and improving your coding skills:</p>
-        <ul>
-            <li><a href="https://www.w3schools.com" target="_blank"><i class="fa fa-external-link-alt"></i>W3Schools</a></li>
-            <li><a href="https://developer.mozilla.org" target="_blank"><i class="fa fa-external-link-alt"></i>MDN Web Docs</a></li>
-            <li><a href="https://stackoverflow.com" target="_blank"><i class="fa fa-external-link-alt"></i>Stack Overflow</a></li>
-        </ul>
+    <section id="about">
+        <div class="container">
+            <h2>About Us</h2>
+            <p>We are a creative agency specializing in web design and development.</p>
+            <div class="row">
+                <div class="col">
+                    <i class="fas fa-paint-brush"></i>
+                    <h3>Design</h3>
+                    <p>Creating stunning and user-friendly websites.</p>
+                </div>
+                <div class="col">
+                    <i class="fas fa-code"></i>
+                    <h3>Development</h3>
+                    <p>Building robust and scalable web applications.</p>
+                </div>
+                <div class="col">
+                    <i class="fas fa-search"></i>
+                    <h3>SEO</h3>
+                    <p>Optimizing your site to rank higher on search engines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="services" class="dark-section">
+        <div class="container">
+            <h2>Our Services</h2>
+            <div class="service-cards">
+                <div class="card">
+                    <h3>Web Design</h3>
+                    <p>Creating visually appealing and user-friendly designs.</p>
+                </div>
+                <div class="card">
+                    <h3>Web Development</h3>
+                    <p>Developing robust and scalable web applications.</p>
+                </div>
+                <div class="card">
+                    <h3>SEO Optimization</h3>
+                    <p>Improving your site's visibility on search engines.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portfolio">
+        <div class="container">
+            <h2>Our Portfolio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/800x600/?website" alt="Portfolio 1">
+                    <div class="overlay">
+                        <h3>Project 1</h3>
+                        <p>Web Design</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/800x600/?coding" alt="Portfolio 2">
+                    <div class="overlay">
+                        <h3>Project 2</h3>
+                        <p>Web Development</p>
+                    </div>
+                </div>
+                <div class="portfolio-item">
+                    <img src="https://source.unsplash.com/800x600/?seo" alt="Portfolio 3">
+                    <div class="overlay">
+                        <h3>Project 3</h3>
+                        <p>SEO Optimization</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="contact">
+        <div class="container">
+            <h2>Contact Us</h2>
+            <form>
+                <input type="text" placeholder="Your Name" required>
+                <input type="email" placeholder="Your Email" required>
+                <textarea placeholder="Your Message" required></textarea>
+                <button type="submit">Send Message</button>
+            </form>
+        </div>
     </section>
     <footer>
-        <p>&copy; 2024 My Scripting and Coding Page</p>
+        <div class="container">
+            <p>&copy; 2024 My Advanced Webpage. All rights reserved.</p>
+            <ul class="social-links">
+                <li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+                <li><a href="#"><i class="fab fa-twitter"></i></a></li>
+                <li><a href="#"><i class="fab fa-linkedin-in"></i></a></li>
+                <li><a href="#"><i class="fab fa-instagram"></i></a></li>
+            </ul>
+        </div>
     </footer>
+    <script src="script.js"></script>
 </body>
 </html>
