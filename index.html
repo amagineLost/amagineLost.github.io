@@ -137,7 +137,15 @@
             }
         }
 
+        function authenticate() {
+            const password = prompt('Enter the password to edit scripts:');
+            if (password === 'testing') {
+                btnEdit.style.display = 'block';
+            }
+        }
+
         renderScripts();
+        authenticate();
     </script>
 </body>
 </html>
