@@ -91,49 +91,67 @@
         const btnEdit = document.querySelector('.btn-edit');
 
         async function fetchScripts() {
-            const response = await fetch('http://localhost:3000/api/scripts');
-            const data = await response.json();
-            return data;
+            try {
+                const response = await fetch('http://localhost:3000/api/scripts');
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                const data = await response.json();
+                return data;
+            } catch (error) {
+                console.error('Fetch error: ', error);
+            }
         }
 
         async function updateScripts(updatedScripts) {
-            await fetch('http://localhost:3000/api/scripts', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(updatedScripts)
-            });
+            try {
+                const response = await fetch('http://localhost:3000/api/scripts', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(updatedScripts)
+                });
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+            } catch (error) {
+                console.error('Update error: ', error);
+            }
         }
 
         async function renderScripts() {
             const scripts = await fetchScripts();
-            scriptsList.innerHTML = '';
-            scripts.forEach(script => {
-                const scriptItem = document.createElement('div');
-                scriptItem.className = 'script-item';
-                scriptItem.innerHTML = `
-                    <h3>${script.title}</h3>
-                    <pre class="script-content">${script.content}</pre>
-                `;
-                scriptsList.appendChild(scriptItem);
-            });
+            if (scripts) {
+                scriptsList.innerHTML = '';
+                scripts.forEach(script => {
+                    const scriptItem = document.createElement('div');
+                    scriptItem.className = 'script-item';
+                    scriptItem.innerHTML = `
+                        <h3>${script.title}</h3>
+                        <pre class="script-content">${script.content}</pre>
+                    `;
+                    scriptsList.appendChild(scriptItem);
+                });
+            }
         }
 
         function toggleEdit() {
             if (btnEdit.textContent === 'Edit Scripts') {
                 btnEdit.textContent = 'Save Changes';
-                scriptsList.innerHTML = '';
                 fetchScripts().then(scripts => {
-                    scripts.forEach((script, index) => {
-                        const scriptItem = document.createElement('div');
-                        scriptItem.className = 'script-item';
-                        scriptItem.innerHTML = `
-                            <h3>${script.title}</h3>
-                            <textarea class="script-content" rows="10" cols="50">${script.content}</textarea>
-                        `;
-                        scriptsList.appendChild(scriptItem);
-                    });
+                    if (scripts) {
+                        scriptsList.innerHTML = '';
+                        scripts.forEach((script, index) => {
+                            const scriptItem = document.createElement('div');
+                            scriptItem.className = 'script-item';
+                            scriptItem.innerHTML = `
+                                <h3>${script.title}</h3>
+                                <textarea class="script-content" rows="10" cols="50">${script.content}</textarea>
+                            `;
+                            scriptsList.appendChild(scriptItem);
+                        });
+                    }
                 });
             } else {
                 btnEdit.textContent = 'Edit Scripts';
