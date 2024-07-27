@@ -73,7 +73,7 @@
 <body>
     <header>
         <h1>Lost - Scripting code</h1>
-        <p>Version 1.0</p> <!-- Version number added here -->
+        <p>Version 1.1</p> <!-- Version number updated to 1.1 -->
     </header>
     <div class="container">
         <div class="scripts-section">
@@ -94,7 +94,7 @@
 
         async function fetchScripts() {
             try {
-                const response = await fetch('http://localhost:3000/api/scripts');
+                const response = await fetch('https://my-project-mjn30ecs3-losts-projects-e8024da1.vercel.app/api/scripts');
                 if (!response.ok) {
                     throw new Error('Network response was not ok ' + response.statusText);
                 }
@@ -108,7 +108,7 @@
         async function updateScripts(updatedScripts) {
             console.log('Updating scripts:', updatedScripts); // Debugging statement
             try {
-                const response = await fetch('http://localhost:3000/api/scripts', {
+                const response = await fetch('https://my-project-mjn30ecs3-losts-projects-e8024da1.vercel.app/api/scripts', {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json'
