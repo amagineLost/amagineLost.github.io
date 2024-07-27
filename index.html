@@ -87,21 +87,27 @@
         &copy; 2024 Lost. All rights reserved.
     </footer>
     <script>
-        const scripts = [
-            {
-                title: 'Sample Script 1',
-                content: `function helloWorld() {\n    console.log("Hello, world!");\n}`
-            },
-            {
-                title: 'Sample Script 2',
-                content: `function add(a, b) {\n    return a + b;\n}`
-            }
-        ];
-
         const scriptsList = document.getElementById('scripts-list');
         const btnEdit = document.querySelector('.btn-edit');
 
-        function renderScripts() {
+        async function fetchScripts() {
+            const response = await fetch('http://localhost:3000/api/scripts');
+            const data = await response.json();
+            return data;
+        }
+
+        async function updateScripts(updatedScripts) {
+            await fetch('http://localhost:3000/api/scripts', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(updatedScripts)
+            });
+        }
+
+        async function renderScripts() {
+            const scripts = await fetchScripts();
             scriptsList.innerHTML = '';
             scripts.forEach(script => {
                 const scriptItem = document.createElement('div');
@@ -118,22 +124,25 @@
             if (btnEdit.textContent === 'Edit Scripts') {
                 btnEdit.textContent = 'Save Changes';
                 scriptsList.innerHTML = '';
-                scripts.forEach((script, index) => {
-                    const scriptItem = document.createElement('div');
-                    scriptItem.className = 'script-item';
-                    scriptItem.innerHTML = `
-                        <h3>${script.title}</h3>
-                        <textarea class="script-content" rows="10" cols="50">${script.content}</textarea>
-                    `;
-                    scriptsList.appendChild(scriptItem);
+                fetchScripts().then(scripts => {
+                    scripts.forEach((script, index) => {
+                        const scriptItem = document.createElement('div');
+                        scriptItem.className = 'script-item';
+                        scriptItem.innerHTML = `
+                            <h3>${script.title}</h3>
+                            <textarea class="script-content" rows="10" cols="50">${script.content}</textarea>
+                        `;
+                        scriptsList.appendChild(scriptItem);
+                    });
                 });
             } else {
                 btnEdit.textContent = 'Edit Scripts';
                 const textareas = document.querySelectorAll('.script-content');
+                const updatedScripts = [];
                 textareas.forEach((textarea, index) => {
-                    scripts[index].content = textarea.value;
+                    updatedScripts.push({ title: scripts[index].title, content: textarea.value });
                 });
-                renderScripts();
+                updateScripts(updatedScripts).then(renderScripts);
             }
         }
 
